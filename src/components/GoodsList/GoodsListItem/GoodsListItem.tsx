@@ -3,22 +3,34 @@ import s from './GoodsListItem.module.scss'
 import { Button, Radio } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
 
+type TOptionWithPrice = {
+   name: string
+   price: number
+}
+
 type TGoodsListItemProps = {
-   img: string
+   id: number
    name: string
    option1?: Array<string>
    selected1?: number
-   option2?: Array<string>
+   option2: Array<TOptionWithPrice>
    selected2?: number
-   price: number
-   added: number
+   type: string
+   img: string
+   added?: number
 }
 
 const GoodsListItem = (props: TGoodsListItemProps) => {
-   const onTypeChanged = (e: any) => {
-      console.log(e.target.value)
+
+   let [valueOpt1, setValueOpt1] = React.useState(0)
+   let [valueOpt2, setValueOpt2] = React.useState(1)
+
+   const onOption1Changed = (e: any) => {
+      setValueOpt1(e.target.value)
    }
-   const onSizeChanged = () => {
+
+   const onOption2Changed = (e: any) => {
+      setValueOpt2(e.target.value)
    }
 
    return (
@@ -32,9 +44,10 @@ const GoodsListItem = (props: TGoodsListItemProps) => {
          <div className={s.goods_list_item_options}>
             <div className={s.goods_list_item_options__type}>
                {props.option1 && <Radio.Group buttonStyle="solid"
+                  className='option1'
                   size="small"
-                  defaultValue={props.selected1}
-                  onChange={onTypeChanged}>
+                  defaultValue={valueOpt1}
+                  onChange={onOption1Changed}>
                      {props.option1.map((item, index) => {
                         return (
                            <Radio.Button key={index + item} value={index}>{item}</Radio.Button>
@@ -44,12 +57,13 @@ const GoodsListItem = (props: TGoodsListItemProps) => {
             </div>
             <div className={s.goods_list_item_options__type}>
                {props.option2 && <Radio.Group buttonStyle="solid"
+                  className='option2'
                   size="small"
-                  defaultValue={props.selected2}
-                  onChange={onTypeChanged}>
+                  defaultValue={valueOpt2}
+                  onChange={onOption2Changed}>
                      {props.option2.map((item, index) => {
                         return (
-                           <Radio.Button key={index + item} value={index}>{item}</Radio.Button>
+                           <Radio.Button key={index + item.name} value={index}>{item.name}</Radio.Button>
                         )
                      })}
                </Radio.Group>}
@@ -57,7 +71,7 @@ const GoodsListItem = (props: TGoodsListItemProps) => {
          </div>
          <div className={s.goods_list_item_footer}>
             <div className={s.goods_list_item_footer__price}>
-               от {props.price} ₽
+               {props.option2[valueOpt2].price} ₽
             </div>
             <div className={s.goods_list_item_footer__add_btn}>
                <Button type="primary" shape="round" icon={<PlusOutlined />}>

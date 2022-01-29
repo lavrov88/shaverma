@@ -4,7 +4,30 @@
 }
 
 .menu_groups__items {
-  label {
-     margin-right: 10px;
-  }
+   label {
+      margin-right: 16px;
+      border-radius: 16px;
+      border: none;
+
+      background-color: #e2e2e2;
+      font-weight: 600;
+
+      &:before {
+         width: 0 !important;
+      }
+
+      &:first-child,
+      &:last-child {
+         border-radius: 13px;
+      }
+   }
+
+   label.ant-radio-button-wrapper-checked {
+      background-color: chartreuse;
+   }
+
+   &:first-child,
+   &:last-child {
+      border-radius: 16px;
+   }
 }
