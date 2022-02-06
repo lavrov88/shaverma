@@ -2,13 +2,17 @@ import React from "react";
 import s from './GoodsListItem.module.scss'
 import { Button, Radio } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
+import './GoodsListItem.scss'
+import { AppDispatch } from "../../../redux/store";
+import { addItemToCart, recalculateCountAndSum } from "../../../redux/actions/cart";
+import { TCardItem } from "../../../redux/reducers/cart";
 
 type TOptionWithPrice = {
    name: string
    price: number
 }
 
-type TGoodsListItemProps = {
+export type TGoodsListItemProps = {
    id: number
    name: string
    option1?: Array<string>
@@ -17,7 +21,18 @@ type TGoodsListItemProps = {
    selected2?: number
    type: string
    img: string
-   added?: number
+   cartItems: Array<TCardItem>
+   dispatch: AppDispatch
+}
+
+const AddButtonCounter = ({ count }: { count: number }) => {
+   if (count > 0) {
+      return (
+         <span className={s.add_btn_counter}>{count}</span>
+      )
+   } else {
+      return null
+   }
 }
 
 const GoodsListItem = (props: TGoodsListItemProps) => {
@@ -31,6 +46,21 @@ const GoodsListItem = (props: TGoodsListItemProps) => {
 
    const onOption2Changed = (e: any) => {
       setValueOpt2(e.target.value)
+   }
+   
+   const addedCounter = props.cartItems.reduce((sum, item) => item.id === props.id
+                                                            ? sum + item.count
+                                                            : sum, 0)
+
+   const onAddClick = () => {
+      props.dispatch(addItemToCart({ 
+         id: props.id, 
+         name: props.name, 
+         img: props.img, 
+         option1: props.option1 ? props.option1[valueOpt1]: null,
+         option2: props.option2[valueOpt2].name, 
+         price: props.option2[valueOpt2].price }))
+      props.dispatch(recalculateCountAndSum())
    }
 
    return (
@@ -74,8 +104,8 @@ const GoodsListItem = (props: TGoodsListItemProps) => {
                {props.option2[valueOpt2].price} ₽
             </div>
             <div className={s.goods_list_item_footer__add_btn}>
-               <Button type="primary" shape="round" icon={<PlusOutlined />}>
-                  Добавить
+               <Button onClick={onAddClick} type="primary" shape="round" icon={<PlusOutlined />}>
+                  Добавить <AddButtonCounter count={addedCounter} />
                </Button>
             </div>
          </div>

@@ -1,6 +1,7 @@
 .menu {
    display: flex;
    justify-content: space-between;
+   align-items: center;
 }
 
 .menu_groups__items {
@@ -18,12 +19,8 @@
 
       &:first-child,
       &:last-child {
-         border-radius: 13px;
+         border-radius: 16px;
       }
-   }
-
-   label.ant-radio-button-wrapper-checked {
-      background-color: chartreuse;
    }
 
    &:first-child,

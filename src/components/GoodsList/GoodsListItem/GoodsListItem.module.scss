@@ -1,67 +1,100 @@
 .goods_list_item {
    display: flex;
    flex-direction: column;
-   width: 300px;
+   width: 280px;
    padding: 10px;
-   margin: 30px 20px;
+   margin: 30px 20px 40px;
 }
 
 .goods_list_item_img {
-   width: 290px;
-   height: 290px;
+   width: 270px;
+   height: 270px;
+   margin-bottom: 10px;
 
    img {
       object-fit: cover;
       width: 100%;
       height: 100%;
+      transform: translateX(-5px);
    }
 }
 
 .goods_list_item_name {
    text-align: center;
-   font-size: 18px;
-   font-weight: 600;
+   font-size: 20px;
+   font-weight: 700;
    margin-bottom: 10px;
 }
 
 .goods_list_item_options {
-   background-color: rgb(224, 224, 224);
-   padding: 0px 10px;
+   width: 270px;
+   padding: 0px 12px;
    margin-bottom: 10px;
    border-radius: 10px;
+
+   background-color: #f0f0f0;
 }
 
-.goods_list_item_options__type > div,
-.goods_list_item_options__size > div {
+.goods_list_item_options__type > div {
    display: flex;
    justify-content: center;
-   margin-top: 10px;
-   margin-bottom: 10px;
+   margin-top: 12px;
+   margin-bottom: 12px;
 }
 
-.goods_list_item_options__type > div > label,
-.goods_list_item_options__size > div > label {
-   width: 50%;
+.goods_list_item_options__type>div>label {
+   display: flex;
+   flex-grow: 1;
+   justify-content: center;
+   align-items: center;
+   border: none;
+
+   background: transparent;
    font-weight: 600;
    text-align: center;
-   padding-top: 5px;
-   padding-bottom: 5px;
+   height: 32px !important;
+
+
+   border-radius: 14px;
+   border: none;
+
+
+   &:before {
+      width: 0 !important;
+   }
+
+   &:first-child,
+   &:last-child {
+      border-radius: 14px;
+      border: none;
+   }
 }
 
-.goods_list_item_options__size > div > label {
-   width: 50%;
-}
-
-.goods_list_item_options__size > div > label {
-   width: 33.33%;
+.goods_list_item_options__type > div > label > span {
+   line-height: 1.1;
+   transform: translateY(-1px);
 }
 
 .goods_list_item_footer {
+   width: 270px;
    display: flex;
+   align-items: center;
    justify-content: space-between;
+   padding: 0px 10px;
 }
 
 .goods_list_item_footer__price {
-   font-size: 18px;
+   font-size: 22px;
    font-weight: 600;
+}
+
+.add_btn_counter {
+   padding-left: 6px;
+   padding-right: 6px;
+   border-radius: 50%;
+   margin-left: 5px;
+
+   font-size: 12px;
+   font-weight: 700;
+   background-color: #5b9227;
 }

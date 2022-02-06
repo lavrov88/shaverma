@@ -1,0 +1,165 @@
+.cart_wrapper {
+   margin: 0 auto;
+   max-width: 700px;
+   margin-top: 30px;
+}
+
+.cart_header {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+}
+
+.cart_clear_btn {
+   transform: translateY(-6px);
+   
+   span {
+      color: #b3b3b3;
+   }
+   
+   &:hover {
+      span {
+         color: #ff4d4f;
+      }
+   }
+}
+
+.cart_divider {
+   margin: 12px 0;
+}
+
+.cart_total {
+   display: flex;
+   align-items: center;
+   justify-content: flex-end;
+   margin-bottom: 20px;
+   margin-right: 10px;
+   gap: 30px;
+
+   font-size: 16px;
+}
+
+.cart_total_counter,
+.cart_total_sum {
+   span {
+      margin-left: 6px;
+      font-size: 18px;
+      font-weight: 600;
+   }
+}
+
+.cart_footer {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   margin-top: 40px;
+   margin-bottom: 30px;
+}
+
+.cart_back_btn {
+   .cart_back_btn__text {
+      transform: translateY(-1px);
+   }
+}
+
+.cart_accept_btn__text {
+   font-weight: 600;
+}
+
+// CART ITEM
+
+.cart_item {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   margin: 20px 0px;
+   padding: 10px;
+   border-radius: 8px;
+}
+
+.cart_item:hover {
+   background-color: #5db91211;
+}
+
+.cart_item__img,
+.cart_item__quantity,
+.cart_item__sum {
+   width: 12%;
+}
+
+.cart_item__delete {
+   width: 9%;
+}
+
+.cart_item__decription {
+   flex-grow: 1;
+}
+
+.cart_item__img {
+   img {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+   }
+}
+
+.cart_item__title {
+   font-size: 16px;
+   font-weight: 600;
+}
+
+.cart_item__options {
+   font-size: 12px;
+   color: #9b9b9b;
+}
+
+.cart_item__quantity {
+   display: flex;
+   align-items: center;
+   font-size: 16px;
+}
+
+.cart_item__quantity_number {
+   font-weight: 600;
+   margin: 0 10px;
+   transform: translateY(-1px);
+}
+
+.cart_item_btn {
+   border: none;
+   background: none;
+   cursor: pointer;
+
+   span {
+      border-radius: 50%;
+   }
+
+   &:hover {
+      span {
+         background-color: #5db91246;
+         color: #555555;
+      }
+   }
+}
+
+.cart_item__quantity_btn {
+   color: #808080;
+}
+
+.cart_item__sum {
+   display: flex;
+   align-items: center;
+   justify-content: flex-end;
+
+   font-size: 18px;
+   font-weight: 600;
+}
+
+.cart_item__delete {
+   display: flex;
+   align-items: center;
+   justify-content: flex-end;
+
+   font-size: 16px;
+   color: #808080;
+}

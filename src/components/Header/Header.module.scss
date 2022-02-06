@@ -26,11 +26,16 @@
 }
 
 .cart_quantity_btn {
-   background-color: #5db912;
-   border-color: #5db912;
+   display: flex !important;
+   font-weight: 600 !important;
+
+   svg {
+      margin-left: 5px;
+   }
 }
 
-.cart_quantity_btn:hover {
-   background-color: #6bc91e;
-   border-color: #6bc91e;
+.cart_quantity_btn__divider {
+   margin: 0 10px;
+   transform: translateY(-1px);
+   font-weight: 700;
 }

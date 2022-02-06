@@ -1,4 +1,4 @@
-import { TSetCategoryAction, TSetSortingAction } from './../actions/navMenu';
+import { TNavMenuActions } from './../actions/navMenu';
 import { TSortingName, TCategory } from './../../common/types';
 
 type TNavMenuState = {
@@ -8,13 +8,10 @@ type TNavMenuState = {
 
 const initialState: TNavMenuState = {
    category: 'all',
-   sortBy: 'popularity'
+   sortBy: 'default'
 }
 
-type TNavMenuReducer = (state: TNavMenuState, 
-                        action: TSetCategoryAction | TSetSortingAction) => TNavMenuState
-
-const navMenuReducer: TNavMenuReducer = (state = initialState, action) => {
+const navMenuReducer = (state = initialState, action: TNavMenuActions): TNavMenuState => {
    if (action.type === 'SET_CATEGORY') {
       return {
          ...state,

@@ -11,12 +11,14 @@ export const setSorting = (sorting: TSortingName) => ({
    payload: sorting
 })
 
-export type TSetCategoryAction = {
+export type TNavMenuActions = TSetCategoryAction | TSetSortingAction
+
+type TSetCategoryAction = {
    type: 'SET_CATEGORY',
    payload: TCategory
 }
 
-export type TSetSortingAction = {
+type TSetSortingAction = {
    type: 'SET_SORTING',
    payload: TSortingName
 }

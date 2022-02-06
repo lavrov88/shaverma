@@ -2,26 +2,43 @@ import React from "react";
 import GoodsListItem from "./GoodsListItem/GoodsListItem";
 import s from './GoodsList.module.scss'
 import NavMenu from "../NavMenu/Menu";
+import getItemLoaderArray from "./GoodsListItem/GoodsListLoaderItem";
+import { TMenuItem } from "../../redux/reducers/shavermas";
+import { AppDispatch } from "../../redux/store";
+import { TCardItem } from "../../redux/reducers/cart";
 
-const GoodsList = (props: any) => {
+type TGoodListProps = {
+   isLoading: boolean
+   menuData: Array<TMenuItem>
+   cartItems: Array<TCardItem>
+   dispatch: AppDispatch
+}
+
+const GoodsList = (props: TGoodListProps) => {
+
    return (
       <div>
          <NavMenu />
-         <main>
+         <div>
             <div className={s.goods_list}>
-               <h2 className={s.goods_list_title}>Всё меню</h2>
                <div className={s.goods_list_items}>
-                  {props.menuData.map((el: any) => <GoodsListItem id={el.id} 
+                  {props.isLoading && getItemLoaderArray(9)}
+
+                  {!props.isLoading && props.menuData.map((el: any) => <GoodsListItem id={el.id} 
                                                    key={el.id + el.name}
                                                    name={el.name} 
                                                    option1={el.option1} 
                                                    option2={el.option2} 
                                                    type={el.type} 
-                                                   img={el.img} />)}
+                                                   img={el.img}
+                                                   cartItems={props.cartItems}
+                                                   dispatch={props.dispatch} />)}
+
                </div>
             </div>
-         </main>
+         </div>
       </div>
+      
    )
 }
 

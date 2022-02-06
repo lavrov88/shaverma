@@ -1,44 +1,43 @@
-import React, { useState } from "react";
 import { Menu, Dropdown, Button } from "antd";
 import { DownOutlined } from "@ant-design/icons";
 import { TSortingName } from "../../../common/types";
+import s from './MenuSorting.module.scss'
+import { setSorting } from "../../../redux/actions/navMenu";
 
-const MenuSorting = () => {
-
-   const [activeSorting, setActiveSorting]: Array<any> = useState('popularity')
-
-   const onSortingChanged = (e: any) => {
+const MenuSorting = (props: any) => {
+   
+      const onSortingChanged = (e: any) => {
       setTimeout(() => {
-         setActiveSorting(e.key)
-      }, 200) // timeout for better menu dissapearing animation
+         props.dispatch(setSorting(e.key))
+      }, 100) // timeout for better menu dissapearing animation
    }
 
    const sorting = (
-      <Menu onClick={onSortingChanged} selectedKeys={[activeSorting]}>
-         <Menu.Item key="popularity">популярности</Menu.Item>
-         <Menu.Item key="price">цене</Menu.Item>
-         <Menu.Item key="alphabet">алфавиту</Menu.Item>
+      <Menu onClick={onSortingChanged} selectedKeys={props.sortBy}>
+         <Menu.Item key="default">по умолчанию</Menu.Item>
+         <Menu.Item key="price">по цене</Menu.Item>
+         <Menu.Item key="alphabet">по алфавиту</Menu.Item>
       </Menu>
    )
 
    const returnSortingLabel = (sortingName: TSortingName) => {
-      if (sortingName === 'popularity') {
-         return 'популярности'
+      if (sortingName === 'default') {
+         return 'по умолчанию'
       }
       if (sortingName === 'price') {
-         return 'цене'
+         return 'по цене'
       }
       if (sortingName === 'alphabet') {
-         return 'алфавиту'
+         return 'по алфавиту'
       }
    }
 
    return (
-      <div className="menu_sorting">
-         Сортировка по:
+      <div className={s.menu_sorting}>
+         Сортировка:
          <Dropdown overlay={sorting} trigger={['click']} placement="bottomRight" >
             <Button type="link">
-               {returnSortingLabel(activeSorting)} <DownOutlined />
+               {returnSortingLabel(props.sortBy)} <DownOutlined />
             </Button>
          </Dropdown>
       </div>

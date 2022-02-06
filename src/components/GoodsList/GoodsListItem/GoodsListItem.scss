@@ -1,0 +1,11 @@
+.ant-radio-button-wrapper:not(:first-child)::before {
+   display: none;
+}
+
+.ant-radio-button-wrapper:first-child {
+   border: none;
+}
+
+// .ant-radio-button-wrapper-checked {
+//    border-radius: 10px !important;
+// }

@@ -5,18 +5,26 @@ import Header from './components/Header/Header';
 import { Route, Routes } from 'react-router-dom';
 import GoodsList from './components/GoodsList/GoodsList';
 import './App.less';
-import { connect } from 'react-redux';
-import { setShavermas } from './redux/actions/shavermas';
-import { Dispatch } from '@reduxjs/toolkit';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchShavermas } from './redux/actions/shavermas';
+import { RootState } from './redux/reducers';
+import Cart from './components/Cart/Cart';
 
+function App() {
 
-function App(props: any) {
+   const dispatch = useDispatch()
+   const state = useSelector((state: RootState) => {
+      return {
+         shavermas: state.shavermas,
+         navMenu: state.navMenu,
+         cart: state.cart
+      }
+   })
+   
 
    React.useEffect(() => {
-      fetch('/menu/menu.json')
-         .then(response => response.json())
-         .then(data => props.setShavermas(data))
-   }, [])
+      dispatch(fetchShavermas(state.navMenu.category, state.navMenu.sortBy))
+   }, [state.navMenu.category, state.navMenu.sortBy])
 
    return (
       <div className={s.app}>
@@ -24,26 +32,19 @@ function App(props: any) {
             <Header />
             <main>
                <Routes>
-                  <Route path="/*" element={ <GoodsList menuData={props.items} /> } />
-                  <Route path="/cart" element={ <h2>КОРЗИНА</h2> } />
+                  <Route path="/*" element={ <GoodsList 
+                                                menuData={state.shavermas.items} 
+                                                isLoading={state.shavermas.isLoading}
+                                                cartItems={state.cart.items}
+                                                dispatch={dispatch} /> } />
+                  <Route path="/cart" element={ <Cart 
+                                                cart={state.cart} 
+                                                dispatch={dispatch} /> } />
                </Routes>
             </main>
          </div>
-
       </div>
    );
 }
 
-const MSTP = (state: any) => {
-   return {
-      items: state.shavermas.items
-   }
-}
-
-const MDTP = (dispatch: Dispatch) => {
-   return {
-      setShavermas: (items: Array<any>) => dispatch(setShavermas(items))
-   }
-}
-
-export default connect(MSTP, MDTP)(App);
+export default App
