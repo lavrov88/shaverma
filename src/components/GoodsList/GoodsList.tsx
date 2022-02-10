@@ -23,7 +23,6 @@ const GoodsList = (props: TGoodListProps) => {
             <div className={s.goods_list}>
                <div className={s.goods_list_items}>
                   {props.isLoading && getItemLoaderArray(9)}
-
                   {!props.isLoading && props.menuData.map((el: any) => <GoodsListItem id={el.id} 
                                                    key={el.id + el.name}
                                                    name={el.name} 
@@ -33,7 +32,6 @@ const GoodsList = (props: TGoodListProps) => {
                                                    img={el.img}
                                                    cartItems={props.cartItems}
                                                    dispatch={props.dispatch} />)}
-
                </div>
             </div>
          </div>
