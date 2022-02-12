@@ -2,6 +2,9 @@
   "name": "shaverma",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+     "node": "16.x"
+  },
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
     "@craco/craco": "^6.4.3",
