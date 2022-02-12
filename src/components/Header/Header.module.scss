@@ -1,8 +1,23 @@
+@import '../../common/media';
+
 .header {
    width: 100%;
    display: flex;
    justify-content: space-between;
    align-items: center;
+
+   @include w540 {
+      position: fixed;
+      top: 0;
+      left: 0;
+      padding: 10px;
+      padding-bottom: 15px;
+      z-index: 1000;
+      border-bottom: #ccc solid 1px;
+
+      background-color: #fff;
+
+   }
 }
 
 .header_logo {
@@ -12,16 +27,24 @@
    img {
       height: 50px;
       transform: rotate(30deg);
+
+      @include w540 {
+         height: 40px;
+      }
    }
 }
 
 .header_logo__title {
    padding: 0;
-   margin-left: 10px;
+   margin: 0 15px;
+   line-height: 1.1;
 
-   span {
-      font-size: 24px;
-      color: rgb(37, 37, 37);
+   font-size: 28px;
+   color: rgb(37, 37, 37);
+   font-weight: 600;
+
+   @include w540 {
+      font-size: 20px;
    }
 }
 

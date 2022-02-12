@@ -1,9 +1,15 @@
+@import '../../../common/media';
+
 .goods_list_item {
    display: flex;
    flex-direction: column;
    width: 280px;
    padding: 10px;
    margin: 30px 20px 40px;
+
+   @include w540 {
+      margin: 20px auto;
+   }
 }
 
 .goods_list_item_img {
@@ -33,6 +39,10 @@
    border-radius: 10px;
 
    background-color: #f0f0f0;
+
+   @include w350 {
+      width: 260px;
+   }
 }
 
 .goods_list_item_options__type > div {

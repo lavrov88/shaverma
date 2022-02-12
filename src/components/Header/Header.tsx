@@ -37,7 +37,7 @@ const Header = () => {
             <div className={s.header_left}>
                <Link to='/'  className={s.header_logo} >
                   <img src={logoImg} alt="logo" />
-                  <PageHeader className={s.header_logo__title} title="Reactive shaverma" />
+                  <h1 className={s.header_logo__title}>Reactive shaverma</h1>
                </Link>
             </div>
             <div className={s.header_cart}>

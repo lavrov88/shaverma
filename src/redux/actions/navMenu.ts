@@ -6,7 +6,7 @@ export const setCategory = (category: TCategory): TSetCategoryAction => ({
    payload: category
 })
 
-export const setSorting = (sorting: TSortingName) => ({
+export const setSorting = (sorting: TSortingName): TSetSortingAction => ({
    type: 'SET_SORTING',
    payload: sorting
 })

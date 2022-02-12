@@ -2,12 +2,13 @@ import { CloseCircleOutlined, DeleteOutlined, LeftOutlined, MinusCircleOutlined,
 import { Button, Divider, Modal } from "antd";
 import Title from "antd/lib/typography/Title";
 import React, { useState } from "react";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { clearCart, decreaseItemAmount, increaseItemAmount, recalculateCountAndSum, removeItemFromCart } from "../../redux/actions/cart";
 import { TCartState } from "../../redux/reducers/cart";
 import { AppDispatch } from "../../redux/store";
 import s from './Cart.module.scss'
 import emptyCardImg from '../../assets/img/empty_cart_cut.jpg'
+import { setCategory, setSorting } from "../../redux/actions/navMenu";
 
 type TCartProps = {
    cart: TCartState
@@ -105,6 +106,7 @@ const Cart = ({ cart, dispatch }: TCartProps) => {
    const [isModalVisible, setIsModalVisible] = useState(false)
    const [isOrderAccepted, setIsOrderAccepted] = useState(false)
    const navigate = useNavigate()
+   const clearCartText = (window.innerWidth < 540) ? 'Очистить' : 'Очистить корзину'
 
    const onClickClearCart = () => {
       dispatch(clearCart())
@@ -124,6 +126,8 @@ const Cart = ({ cart, dispatch }: TCartProps) => {
       setTimeout(() => {
          dispatch(clearCart())
          dispatch(recalculateCountAndSum())
+         dispatch(setCategory('all'))
+         dispatch(setSorting('default'))
          setIsModalVisible(false)
          navigate('/')
       }, 1500)
@@ -143,7 +147,7 @@ const Cart = ({ cart, dispatch }: TCartProps) => {
             </div>
             <div className={s.cart_header_clear}>
                <Button onClick={onClickClearCart} className={s.cart_clear_btn} type="link" danger shape="round" size={"middle"}>
-                  <DeleteOutlined /><span className={s.cart_clear_btn__text}>Очистить корзину</span>
+                  <DeleteOutlined /><span className={s.cart_clear_btn__text}>{clearCartText}</span>
                </Button>
             </div>
          </div>

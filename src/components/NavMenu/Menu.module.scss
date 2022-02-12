@@ -1,8 +1,21 @@
+@import '../../common/media';
+
 .menu {
    display: flex;
    justify-content: space-between;
    align-items: center;
+
+   @include w768 {
+      flex-direction: column;
+   }
 }
+
+// .menu_groups {
+//    @include w540 {
+//       width: 100%;
+//       overflow: auto;
+//    }
+// }
 
 .menu_groups__items {
    label {
@@ -26,5 +39,21 @@
    &:first-child,
    &:last-child {
       border-radius: 16px;
+   }
+
+   @include w768 {
+      label {
+         margin-bottom: 10px;
+      }
+   }
+   
+   @include w540 {
+      label {
+         margin-right: 5px;
+         padding: 0 10px;
+      }
+      span {
+         font-size: 14px;
+      }
    }
 }
