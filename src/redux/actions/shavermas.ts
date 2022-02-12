@@ -39,14 +39,14 @@ export const fetchShavermas = (category: TCategory, sortBy: TSortingName) => {
 
    return (dispatch: any) => {
       dispatch(SetShavermasIsLoading(true))
-      setTimeout(() => {
-         console.log('0.5s delay for fetchting from server imitation')
+      // setTimeout(() => {
+      //    console.log('0.5s delay for fetchting from server imitation')
 
-         fetch('http://localhost:3004/menu' + categoryFetchParameter() + sortFetchParameter())
+         fetch('/menu' + categoryFetchParameter() + sortFetchParameter())
          .then(response => response.json())
          .then(data => dispatch(setShavermas(data)))
          .then(data => dispatch(SetShavermasIsLoading(false)))
-      }, 500)
+      // }, 500)
    }
 }
 
