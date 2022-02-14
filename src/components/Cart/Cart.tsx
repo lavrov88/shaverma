@@ -193,7 +193,7 @@ const Cart = ({ cart, dispatch }: TCartProps) => {
                      type="default" shape="round" >
                      Отмена
                   </Button>,
-                  <Button key="back" onClick={handleSubmit} className={s.cart_accept_btn + ' ' + s.cart_modal_btn}
+                  <Button key="submit" onClick={handleSubmit} className={s.cart_accept_btn + ' ' + s.cart_modal_btn}
                      type="primary" shape="round" >
                      Подтверждаю
                   </Button>

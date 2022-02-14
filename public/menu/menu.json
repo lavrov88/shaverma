@@ -103,11 +103,11 @@
          "option2":[
             {
                "name":"маленькая",
-               "price":130
+               "price":110
             },
             {
                "name":"большая",
-               "price":170
+               "price":140
             }
          ],
          "type":"snacks",
@@ -120,11 +120,11 @@
          "option2":[
             {
                "name":"маленькая",
-               "price":150
+               "price":130
             },
             {
                "name":"большая",
-               "price":190
+               "price":160
             }
          ],
          "type":"snacks",
@@ -137,11 +137,11 @@
          "option2":[
             {
                "name":"маленькие",
-               "price":170
+               "price":130
             },
             {
                "name":"большие",
-               "price":220
+               "price":190
             }
          ],
          "type":"snacks",
@@ -171,11 +171,11 @@
          "option2":[
             {
                "name":"маленький",
-               "price":120
+               "price":90
             },
             {
                "name":"большой",
-               "price":160
+               "price":120
             }
          ],
          "type":"drinks",
@@ -188,11 +188,11 @@
          "option2":[
             {
                "name":"маленький",
-               "price":90
+               "price":70
             },
             {
                "name":"большой",
-               "price":130
+               "price":90
             }
          ],
          "type":"drinks",

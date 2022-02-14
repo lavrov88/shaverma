@@ -16,12 +16,21 @@ export type TCartState = {
    totalSum: number
 }
 
-const initialState: TCartState = {
+let stateFromLocalStorage = null
+try {
+   stateFromLocalStorage = JSON.parse(localStorage.getItem('reduxState') || '')
+}
+catch {
+   stateFromLocalStorage = null
+}
+
+let initialState: TCartState = stateFromLocalStorage ? stateFromLocalStorage.cart : {
    items: [
    ],
    totalCount: 0,
    totalSum: 0
 }
+
 
 const cartReducer = (state = initialState, action: TCardActions): TCartState => {
    

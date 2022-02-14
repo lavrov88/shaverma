@@ -26,6 +26,7 @@ function App() {
       dispatch(fetchShavermas(state.navMenu.category, state.navMenu.sortBy))
    }, [state.navMenu.category, state.navMenu.sortBy])
 
+
    return (
       <div className={s.app}>
          <div className={s.app_wrapper}>
