@@ -3,8 +3,14 @@ import { DownOutlined } from "@ant-design/icons";
 import { TSortingName } from "../../../common/types";
 import s from './MenuSorting.module.scss'
 import { setSorting } from "../../../redux/actions/navMenu";
+import { AppDispatch } from "../../../redux/store";
 
-const MenuSorting = (props: any) => {
+type TMenuSortingProps = {
+   dispatch: AppDispatch
+   sortBy: TSortingName
+}
+
+const MenuSorting = (props: TMenuSortingProps) => {
    
       const onSortingChanged = (e: any) => {
       setTimeout(() => {
@@ -13,7 +19,7 @@ const MenuSorting = (props: any) => {
    }
 
    const sorting = (
-      <Menu onClick={onSortingChanged} selectedKeys={props.sortBy}>
+      <Menu onClick={onSortingChanged} selectedKeys={[props.sortBy]}>
          <Menu.Item key="default">по умолчанию</Menu.Item>
          <Menu.Item key="price">по цене</Menu.Item>
          <Menu.Item key="alphabet">по алфавиту</Menu.Item>

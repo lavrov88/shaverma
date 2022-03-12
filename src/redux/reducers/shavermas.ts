@@ -11,7 +11,7 @@ export type TMenuItem = {
    img: string
    name: string
    type: TCategory
-   option1?: string
+   option1?: Array<string>
    option2: Array<TMenuOption2Item>
 }
 
